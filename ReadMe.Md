@@ -1,6 +1,7 @@
 ![](pwt.png)
 
-pwt ("port wait") waits for you until a port becomes available. Never call sleep again in your continuous integration
+pwt ("port wait") waits for you until a tcp socket, aka port becomes available and exits once it does. Designed for 
+continuous integration scripts, never call sleep again.
 pipeline.
 
 [![Github Workflows](https://github.com/simonmittag/mse6/workflows/Go/badge.svg)](https://github.com/simonmittag/pwt/actions)
@@ -21,7 +22,7 @@ pwt
 ```bash
 go get github.com/simonmittag/pwt && 
 go install github.com/simonmittag/pwt/cmd/pwt && 
-pwt
+pwt -t localhost -p 80
 ```
 
 ## Usage
