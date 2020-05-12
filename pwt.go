@@ -8,10 +8,16 @@ import (
 
 const Version string = "v0.1.1"
 
+var dialler = &net.Dialer{
+	Timeout:   1 * time.Second,
+	KeepAlive: 1 * time.Second,
+}
+
 func Zzz(host string, port uint16, timeSeconds int) bool {
 	fmt.Printf("pwt waiting for %s:%d ", host, port)
 	for i := 0; i < timeSeconds; i++ {
-		conn, err := net.Dial("tcp", fmt.Sprintf("%s:%d", host, port))
+
+		conn, err := dialler.Dial("tcp", fmt.Sprintf("%s:%d", host, port))
 		if err != nil {
 			time.Sleep(time.Duration(1 * time.Second))
 			fmt.Print(".")
