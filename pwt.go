@@ -3,13 +3,12 @@ package pwt
 import (
 	"fmt"
 	"net"
-	"os"
 	"time"
 )
 
 const Version string = "v0.1.0"
 
-func Zzz(host string, port uint16, timeSeconds int) {
+func Zzz(host string, port uint16, timeSeconds int) bool {
 	fmt.Printf("pwt dialling %s:%d ", host, port)
 	for i := 0; i < timeSeconds; i++ {
 		conn, err := net.Dial("tcp", fmt.Sprintf("%s:%d", host, port))
@@ -18,15 +17,15 @@ func Zzz(host string, port uint16, timeSeconds int) {
 			fmt.Print(".")
 		} else {
 			fmt.Print(" success")
-			if i>0 {
+			if i > 0 {
 				fmt.Printf(" in %d seconds\n", i)
 			} else {
 				fmt.Printf(" in <1 second\n")
 			}
 			conn.Close()
-			os.Exit(0)
+			return true
 		}
 	}
 	fmt.Printf(" aborted after %d seconds\n", timeSeconds)
-	os.Exit(-1)
+	return false
 }

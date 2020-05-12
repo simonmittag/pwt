@@ -3,6 +3,7 @@ package main
 import (
 	"flag"
 	"github.com/simonmittag/pwt"
+	"os"
 )
 
 func main() {
@@ -11,5 +12,10 @@ func main() {
 	timeSeconds := flag.Int("w", 10, "time wait in seconds")
 	flag.Parse()
 
-	pwt.Zzz(*host, uint16(*port), *timeSeconds)
+	ok := pwt.Zzz(*host, uint16(*port), *timeSeconds)
+	if ok {
+		os.Exit(0)
+	} else {
+		os.Exit(-1)
+	}
 }
