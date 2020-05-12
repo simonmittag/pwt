@@ -1,8 +1,7 @@
 ![](pwt.png)
 
-pwt ("port wait") waits for you until a tcp socket, aka port becomes available and exits once it does. Designed for 
-continuous integration scripts, never call sleep again.
-pipeline.
+pwt ("port wait") waits for you until a tcp socket, aka port becomes available and exits cleanly once it does. Designed for 
+continuous integration scripts, never call sleep inside your pipeline again.
 
 [![Github Workflows](https://github.com/simonmittag/mse6/workflows/Go/badge.svg)](https://github.com/simonmittag/pwt/actions)
 [![Github Issues](https://img.shields.io/github/issues/simonmittag/pwt)](https://github.com/simonmittag/pwt/issues)
@@ -15,7 +14,7 @@ pipeline.
 ```
 brew tap simonmittag/cli &&
 brew install pwt &&
-pwt
+pwt -t localhost -p 80
 ```
 
 ### Golang
