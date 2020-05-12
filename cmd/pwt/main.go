@@ -6,7 +6,11 @@ import (
 )
 
 func main() {
-	port := flag.String("p", "8080", "the port, defaults to 8080")
 	host := flag.String("h", "localhost", "the host name, defaults to localhost")
-	time := flag.Int("t", 60, "time wait in seconds, defaults to 60")
+	port := flag.Uint("p", 8080, "the port, defaults to 8080")
+	timeSeconds := flag.Int("t", 60, "time wait in seconds, defaults to 60")
+	flag.Parse()
+
+
+	pwt.Zzz(*host, uint16(*port), *timeSeconds)
 }
