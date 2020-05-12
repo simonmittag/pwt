@@ -6,7 +6,7 @@ import (
 	"time"
 )
 
-const Version string = "v0.1.0"
+const Version string = "v0.1.1"
 
 func Zzz(host string, port uint16, timeSeconds int) bool {
 	fmt.Printf("pwt waiting for %s:%d ", host, port)
