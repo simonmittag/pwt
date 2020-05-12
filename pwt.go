@@ -10,7 +10,7 @@ import (
 const Version string = "v0.1.0"
 
 func Zzz(host string, port uint16, timeSeconds int) {
-	fmt.Printf("pwt[%s] attempting to dial %s on port %d ", Version, host, port)
+	fmt.Printf("pwt[%s] attempting to dial %s:%d ", Version, host, port)
 	for i := 0; i < timeSeconds; i++ {
 		conn, err := net.Dial("tcp", fmt.Sprintf("%s:%d", host, port))
 		if err != nil {
@@ -22,6 +22,6 @@ func Zzz(host string, port uint16, timeSeconds int) {
 			os.Exit(0)
 		}
 	}
-	fmt.Printf("\npwt[%s] aborting attempted dial to %s on port %d after %d seconds, exiting\n", Version, host, port, timeSeconds)
+	fmt.Printf("\npwt[%s] aborted dialling %s:%d after %d seconds\n", Version, host, port, timeSeconds)
 	os.Exit(-1)
 }
