@@ -1,7 +1,7 @@
 ![](pwt.png)
 
 pwt ("port wait") waits for you until a port becomes available. Never call sleep again in your continuous integration
-pipeline to wait for a server becoming available.
+pipeline.
 
 [![Github Workflows](https://github.com/simonmittag/mse6/workflows/Go/badge.svg)](https://github.com/simonmittag/pwt/actions)
 [![Github Issues](https://img.shields.io/github/issues/simonmittag/pwt)](https://github.com/simonmittag/pwt/issues)
