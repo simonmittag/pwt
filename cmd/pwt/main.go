@@ -6,9 +6,9 @@ import (
 )
 
 func main() {
-	host := flag.String("h", "localhost", "the host name, defaults to localhost")
+	host := flag.String("t", "localhost", "the target host name, defaults to localhost")
 	port := flag.Uint("p", 8080, "the port, defaults to 8080")
-	timeSeconds := flag.Int("t", 60, "time wait in seconds, defaults to 60")
+	timeSeconds := flag.Int("w", 60, "time wait in seconds, defaults to 60")
 	flag.Parse()
 
 
