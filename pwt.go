@@ -17,7 +17,12 @@ func Zzz(host string, port uint16, timeSeconds int) {
 			time.Sleep(time.Duration(1 * time.Second))
 			fmt.Print(".")
 		} else {
-			fmt.Printf("\npwt[%s] succesfully connected to %s:%d after %d seconds\n", Version, host, port, i)
+			fmt.Printf("\npwt[%s] succesfully connected to %s:%d", Version, host, port)
+			if i>0 {
+				fmt.Printf(" in %d seconds\n", i)
+			} else {
+				fmt.Printf(" in <1 second\n")
+			}
 			conn.Close()
 			os.Exit(0)
 		}
