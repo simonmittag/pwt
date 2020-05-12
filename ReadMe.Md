@@ -3,6 +3,7 @@
 pwt ("port wait") waits for you until a tcp socket, aka port becomes available and exits cleanly once it does. Designed for 
 continuous integration scripts, never call sleep inside your pipeline again.
 
+[![Circleci Builds](https://circleci.com/gh/simonmittag/pwt.svg?style=shield)](https://circleci.com/gh/simonmittag/pwt)
 [![Github Workflows](https://github.com/simonmittag/mse6/workflows/Go/badge.svg)](https://github.com/simonmittag/pwt/actions)
 [![Github Issues](https://img.shields.io/github/issues/simonmittag/pwt)](https://github.com/simonmittag/pwt/issues)
 [![Github Activity](https://img.shields.io/github/commit-activity/m/simonmittag/pwt)](https://img.shields.io/github/commit-activity/m/simonmittag/pwt)  
