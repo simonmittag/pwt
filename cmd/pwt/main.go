@@ -13,9 +13,11 @@ const default_host = "localhost"
 const default_port = 80
 
 func main() {
+	flag.Usage = pwtUsage
 	timeSeconds := flag.Int("w", 10, "time wait in seconds")
 	modeVersion := flag.Bool("v", false, "print pwt version")
 	flag.Parse()
+
 	host, port := parseArgs(flag.Args())
 
 	if *modeVersion {
@@ -23,6 +25,11 @@ func main() {
 	} else {
 		wait(host, port, *timeSeconds)
 	}
+}
+
+func pwtUsage() {
+	fmt.Fprintf(os.Stdout, "Usage: pwt [-v]|[-w n] host[:port]\n")
+	flag.PrintDefaults()
 }
 
 func printVersion() {
