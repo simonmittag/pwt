@@ -45,8 +45,8 @@ func parseArgs(args []string) (string, int) {
 			host = args[0]
 		}
 	} else if len(args) == 2 {
-		host = args[1]
-		port, _ = strconv.Atoi(args[2])
+		host = args[0]
+		port, _ = strconv.Atoi(args[1])
 	}
 	return host, port
 }

@@ -63,3 +63,13 @@ func TestParseArgsIpv6ColonPort(t *testing.T) {
 		t.Errorf("did not resolve port want %d, got %d", 8087, port)
 	}
 }
+
+func TestParseArgsHostAndPort(t *testing.T) {
+	host, port := parseArgs([]string{"hostname.com", "8089"})
+	if host != "hostname.com" {
+		t.Errorf("did not resolve host want [::1] got %s", host)
+	}
+	if port != 8089 {
+		t.Errorf("did not resolve port want %d, got %d", 8087, port)
+	}
+}
