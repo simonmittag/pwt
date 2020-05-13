@@ -29,15 +29,35 @@ pwt -t localhost -p 80
 
 ## Usage
 ```
-λ pwt -h
+λ pwt [-w] host[:port]
   Usage of pwt:
-    -p uint
-          the destination port (default 80)
-    -t string
-          the destination host name (default "localhost")
     -w int
           time wait in seconds (default 10)
 ```
+
+## Examples
+
+Wait for ipv4 localhost on default port
+```
+λ pwt 127.0.0.1
+  pwt waiting for 127.0.0.1:80 .......... aborted after 10 seconds  
+```
+
+Wait for ipv6 localhost on port 8080 for 3 seconds
+```
+λ pwt -w 3 [::1]:8080
+  pwt waiting for [::1]:8080 connected in <1 second  
+```
+
+
+
+Wait for google on port 443
+```
+λ pwt -w 60 google.com:443
+  pwt waiting for google.com:443 connected in <1 second  
+```
+
+
 
 ## Contributions
 The pwt team welcomes all [contributors](https://github.com/simonmittag/pwt/blob/master/CONTRIBUTING.md). Everyone interacting with the project's codebase, issue trackers, chat rooms and mailing lists

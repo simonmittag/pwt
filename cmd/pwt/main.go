@@ -13,7 +13,6 @@ const default_host = "localhost"
 const default_port = 80
 
 func main() {
-
 	timeSeconds := flag.Int("w", 10, "time wait in seconds")
 	modeVersion := flag.Bool("v", false, "print pwt version")
 	flag.Parse()
