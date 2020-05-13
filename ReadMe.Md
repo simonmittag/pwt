@@ -46,7 +46,7 @@ Wait for ipv4 localhost on default port
 Wait for ipv6 localhost on port 8080 for 3 seconds
 ```
 λ pwt -w 3 [::1]:8080
-  pwt waiting for [::1]:8080 connected in <1 second  
+  pwt waiting for [::1]:8080 .. connected in 2 seconds
 ```
 
 
