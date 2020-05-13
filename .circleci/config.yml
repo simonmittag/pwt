@@ -1,5 +1,12 @@
 version: 2.1
 
+workflows:
+  version: 2.1
+  ci:
+    jobs:
+      - build
+      - metrics
+
 jobs:
   build:
     docker:
@@ -8,3 +15,50 @@ jobs:
       - checkout # check out source code to working directory
       - run: go build github.com/simonmittag/pwt
       - run: go install github.com/simonmittag/pwt/cmd/pwt
+
+  metrics:
+    docker:
+      - image: circleci/golang:1.14 #
+    environment:
+      TEST_RESULTS: /tmp/test-results
+      LOGLEVEL: TRACE
+      LOGCOLOR: TRUE
+      CC_TEST_REPORTER_ID: 9cbbfc8eec2e3c0a4b39f59edc541877c6c416cbc57ef52f5702cfaed9687c52
+    steps:
+      - checkout # check out source code to working directory
+      - run:
+          name: "Create a temp directory for artifacts"
+          command: |
+            mkdir -p /tmp/artifacts
+      - run:
+          name: "Create a temp directory for tests"
+          command: |
+            mkdir -p /tmp/test-results
+      - run:
+          name: Setup Code Climate test-reporter
+          command: |
+            # download test reporter as a static binary
+            curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+            chmod +x ./cc-test-reporter
+      - run:
+          name: Run tests with coverage report
+          command: |
+            export GIT_COMMITTED_AT="$(date +%s)"
+            export CIRCLE_SHA="$CIRCLE_SHA1"
+            export CIRCLE_BRANCH=`git rev-parse --abbrev-ref HEAD`
+            ./cc-test-reporter before-build
+            go test -cover -coverprofile=c.out ./...
+            go tool cover -html=c.out -o coverage.html
+            ./cc-test-reporter after-build --coverage-input-type gocov -p "github.com/simonmittag/pwt"
+            mv coverage.html /tmp/artifacts
+
+      - store_artifacts:
+          path: /tmp/artifacts
+
+      - run:
+          name: Test Summary for CircleCI
+          command: |
+            gotestsum --junitfile /tmp/test-results/unit-tests.xml
+
+      - store_test_results:
+          path: /tmp/test-results

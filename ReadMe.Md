@@ -7,6 +7,8 @@ continuous integration scripts, never call sleep inside your pipeline again.
 [![Github Workflows](https://github.com/simonmittag/mse6/workflows/Go/badge.svg)](https://github.com/simonmittag/pwt/actions)
 [![Github Issues](https://img.shields.io/github/issues/simonmittag/pwt)](https://github.com/simonmittag/pwt/issues)
 [![Github Activity](https://img.shields.io/github/commit-activity/m/simonmittag/pwt)](https://img.shields.io/github/commit-activity/m/simonmittag/pwt)  
+[![CodeClimate Maintainability](https://api.codeclimate.com/v1/badges/70cd59e4dfd2801f8661/maintainability)](https://codeclimate.com/github/simonmittag/pwt/maintainability)
+[![CodeClimate Test Coverage](https://api.codeclimate.com/v1/badges/70cd59e4dfd2801f8661/test_coverage)](https://codeclimate.com/github/simonmittag/pwt/test_coverage)
 [![Go Version](https://img.shields.io/github/go-mod/go-version/simonmittag/pwt)](https://img.shields.io/github/go-mod/go-version/simonmittag/pwt)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
