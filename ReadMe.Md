@@ -29,10 +29,10 @@ pwt
 
 ## Usage
 ```
-λ pwt [-w] host[:port]
-  Usage of pwt:
+λ pwt [-v]|[-w n] host[:port]
+    -v	print pwt version
     -w int
-          time wait in seconds (default 10)
+      	time wait in seconds (default 10)
 ```
 
 ## Examples
