@@ -17,14 +17,14 @@ continuous integration scripts, never call sleep inside your pipeline again.
 ```
 brew tap simonmittag/cli &&
 brew install pwt &&
-pwt -t localhost -p 80
+pwt 
 ```
 
 ### Golang
 ```bash
 go get github.com/simonmittag/pwt && 
 go install github.com/simonmittag/pwt/cmd/pwt && 
-pwt -t localhost -p 80
+pwt 
 ```
 
 ## Usage
