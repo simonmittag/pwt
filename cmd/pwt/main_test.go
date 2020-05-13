@@ -73,3 +73,11 @@ func TestParseArgsHostAndPort(t *testing.T) {
 		t.Errorf("did not resolve port want %d, got %d", 8087, port)
 	}
 }
+
+func TestWait(t *testing.T) {
+	wait("google.com", 80, 1)
+}
+
+func TestPrintVersion(t *testing.T) {
+	printVersion()
+}

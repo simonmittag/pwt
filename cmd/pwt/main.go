@@ -20,14 +20,22 @@ func main() {
 	host, port := parseArgs(flag.Args())
 
 	if *modeVersion {
-		fmt.Printf("pwt[%s]\n", pwt.Version)
+		printVersion()
 	} else {
-		ok := pwt.Zzz(host, uint16(port), *timeSeconds)
-		if ok {
-			os.Exit(0)
-		} else {
-			os.Exit(-1)
-		}
+		wait(host, port, *timeSeconds)
+	}
+}
+
+func printVersion() {
+	fmt.Printf("pwt[%s]\n", pwt.Version)
+}
+
+func wait(host string, port int, timeSeconds int) {
+	ok := pwt.Zzz(host, uint16(port), timeSeconds)
+	if ok {
+		os.Exit(0)
+	} else {
+		os.Exit(-1)
 	}
 }
 
