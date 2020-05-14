@@ -15,8 +15,7 @@ continuous integration scripts, never call sleep inside your pipeline again.
 ## Up and running
 ### Osx
 ```
-brew tap simonmittag/cli &&
-brew install pwt &&
+brew install simonmittag/cli/pwt &&
 pwt 
 ```
 
