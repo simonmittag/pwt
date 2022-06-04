@@ -18,7 +18,7 @@ jobs:
 
   metrics:
     docker:
-      - image: circleci/golang:1.14 #
+      - image: cimg/go:1.18 #
     environment:
       TEST_RESULTS: /tmp/test-results
       LOGLEVEL: TRACE
