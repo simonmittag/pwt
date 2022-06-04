@@ -13,15 +13,16 @@ continuous integration scripts, never call sleep inside your pipeline again.
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
 ## Up and running
-### Osx
+### Homebrew
 ```
-brew install simonmittag/cli/pwt &&
-pwt 
+brew tap simonmittag/cli &&
+  brew install pwt &&
+  pwt 
 ```
 
 ### Golang
 ```bash
-go get github.com/simonmittag/pwt && 
+git clone https://github.com/simonmittag/pwt && cd pwt && 
 go install github.com/simonmittag/pwt/cmd/pwt && 
 pwt 
 ```
