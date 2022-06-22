@@ -12,6 +12,9 @@ continuous integration scripts, never call sleep inside your pipeline again.
 [![Go Version](https://img.shields.io/github/go-mod/go-version/simonmittag/pwt)](https://img.shields.io/github/go-mod/go-version/simonmittag/pwt)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
+## What's New
+Updated to v0.1.3 to fix checksum error
+
 ## Up and running
 ### Homebrew
 ```
