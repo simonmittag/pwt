@@ -12,23 +12,46 @@ import (
 const default_host = "localhost"
 const default_port = 80
 
+type Mode uint8
+
+const (
+	Server Mode = 1 << iota
+	Version
+	Usage
+)
+
 func main() {
-	flag.Usage = pwtUsage
+	mode := Server
+
 	timeSeconds := flag.Int("w", 10, "time wait in seconds")
-	modeVersion := flag.Bool("v", false, "print pwt version")
+	v := flag.Bool("v", false, "print pwt version")
+	h := flag.Bool("h", false, "print usage instructions")
+	flag.Usage = printUsage
 	flag.Parse()
 
 	host, port := parseArgs(flag.Args())
 
-	if *modeVersion {
-		printVersion()
+	if *v {
+		mode = Version
+	} else if *h {
+		mode = Usage
 	} else {
+		mode = Server
+	}
+
+	switch mode {
+	case Server:
 		wait(host, port, *timeSeconds)
+	case Usage:
+		printUsage()
+	case Version:
+		printVersion()
 	}
 }
 
-func pwtUsage() {
-	fmt.Fprintf(os.Stdout, "Usage: pwt [-v]|[-w n] host[:port]\n")
+func printUsage() {
+	printVersion()
+	fmt.Printf("Usage: pwt [-v]|[-w n] host[:port]\n")
 	flag.PrintDefaults()
 }
 
