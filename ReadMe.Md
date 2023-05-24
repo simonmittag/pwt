@@ -11,9 +11,10 @@ continuous integration scripts, never call sleep inside your pipeline again.
 [![CodeClimate Test Coverage](https://api.codeclimate.com/v1/badges/70cd59e4dfd2801f8661/test_coverage)](https://codeclimate.com/github/simonmittag/pwt/test_coverage)
 [![Go Version](https://img.shields.io/github/go-mod/go-version/simonmittag/pwt)](https://img.shields.io/github/go-mod/go-version/simonmittag/pwt)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+[![Version](https://img.shields.io/badge/version-0.1.6-orange)](https://github.com/simonmittag/pwt/releases/tag/v0.1.6)
 
 ## What's New
-Updated to v0.1.5 with better help flags
+Updated to v0.1.6 with better help flags
 
 ## Up and running
 ### Homebrew
