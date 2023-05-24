@@ -1,3 +1,3 @@
 module github.com/simonmittag/pwt
 
-go 1.14
+go 1.20
