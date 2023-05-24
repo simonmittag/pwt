@@ -61,9 +61,7 @@ func printVersion() {
 
 func wait(host string, port int, timeSeconds int) {
 	ok := pwt.Zzz(host, uint16(port), timeSeconds)
-	if ok {
-		os.Exit(0)
-	} else {
+	if !ok {
 		os.Exit(-1)
 	}
 }
