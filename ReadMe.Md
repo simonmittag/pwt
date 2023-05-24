@@ -32,10 +32,12 @@ pwt
 
 ## Usage
 ```
-λ pwt [-v]|[-w n] host[:port]
-    -v	print pwt version
-    -w int
-      	time wait in seconds (default 10)
+λ pwt[v0.1.6]
+Usage: pwt [-v]|[-w n] host[:port]
+  -h    print usage instructions
+  -v    print pwt version
+  -w int
+        time wait in seconds (default 10)
 ```
 
 ## Examples
