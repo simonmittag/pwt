@@ -1,8 +1,25 @@
 package main
 
 import (
+	"os"
 	"testing"
 )
+
+//TODO: cannot run these tests because multiple invocations of flag.Arg()
+//func TestMainFuncWithVersion(t *testing.T) {
+//	os.Args = append([]string{""}, "-v")
+//	main()
+//}
+//
+//func TestMainFuncWithUsage(t *testing.T) {
+//	os.Args = append([]string{""}, "-h")
+//	main()
+//}
+
+func TestMainFuncWithArgs(t *testing.T) {
+	os.Args = append([]string{""}, "www.google.com", "443")
+	main()
+}
 
 func TestParseArgsHostNameColonPort(t *testing.T) {
 	host, port := parseArgs([]string{"somehost:8083"})
