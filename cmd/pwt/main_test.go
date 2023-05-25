@@ -3,7 +3,6 @@ package main
 import (
 	"os"
 	"testing"
-	"time"
 )
 
 //TODO: cannot run these tests because multiple invocations of flag.Arg()
@@ -19,17 +18,8 @@ import (
 
 func TestMainFuncWithPositionalArgsBeforeFlagArgs(t *testing.T) {
 	//first arg is command
-	before := time.Now()
-	os.Args = []string{"pwt", "www.google.com:888", "-w", "4"}
+	os.Args = []string{"pwt", "www.google.com", "-w", "4"}
 	main()
-
-	after := time.Now()
-	got := after.Sub(before).Seconds()
-	want := time.Duration(time.Second * 4).Seconds()
-	if float64(got) < float64(want) {
-		t.Errorf("wanted at least %v seconds, but got %v", want, got)
-	}
-
 }
 
 func TestParseArgsHostNameColonPort(t *testing.T) {

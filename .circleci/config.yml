@@ -10,7 +10,7 @@ workflows:
 jobs:
   build:
     docker:
-      - image: cimg/go:1.18 #
+      - image: cimg/go:1.20 #
     steps:
       - checkout # check out source code to working directory
       - run: go build github.com/simonmittag/pwt
@@ -18,7 +18,7 @@ jobs:
 
   metrics:
     docker:
-      - image: cimg/go:1.18 #
+      - image: cimg/go:1.20 #
     environment:
       TEST_RESULTS: /tmp/test-results
       LOGLEVEL: TRACE
