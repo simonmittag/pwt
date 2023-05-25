@@ -6,7 +6,7 @@ import (
 	"time"
 )
 
-const Version string = "v0.1.6"
+const Version string = "v0.1.7"
 
 var dialler = &net.Dialer{
 	Timeout:   1 * time.Second,

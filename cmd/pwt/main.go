@@ -1,6 +1,7 @@
 package main
 
 import (
+	"errors"
 	"flag"
 	"fmt"
 	"github.com/simonmittag/pwt"
@@ -9,7 +10,6 @@ import (
 	"strings"
 )
 
-const default_host = "localhost"
 const default_port = 80
 
 type Mode uint8
@@ -22,21 +22,27 @@ const (
 
 func main() {
 	mode := Server
+	host := ""
+	port := default_port
 
 	timeSeconds := flag.Int("w", 10, "time wait in seconds")
 	v := flag.Bool("v", false, "print pwt version")
 	h := flag.Bool("h", false, "print usage instructions")
 	flag.Usage = printUsage
-	flag.Parse()
-
-	host, port := parseArgs(flag.Args())
-
-	if *v {
-		mode = Version
-	} else if *h {
+	err := ParseFlags()
+	if err != nil {
 		mode = Usage
 	} else {
-		mode = Server
+		a := flag.Args()
+		host, port, err = parseArgs(a)
+
+		if *v {
+			mode = Version
+		} else if err != nil || *h {
+			mode = Usage
+		} else {
+			mode = Server
+		}
 	}
 
 	switch mode {
@@ -51,7 +57,7 @@ func main() {
 
 func printUsage() {
 	printVersion()
-	fmt.Printf("Usage: pwt [-v]|[-w n] host[:port]\n")
+	fmt.Printf("Usage: pwt [-h]|[-v]|[-w n] host[:port]\n")
 	flag.PrintDefaults()
 }
 
@@ -66,8 +72,8 @@ func wait(host string, port int, timeSeconds int) {
 	}
 }
 
-func parseArgs(args []string) (string, int) {
-	var host string = default_host
+func parseArgs(args []string) (string, int, error) {
+	var host = ""
 	var port int = default_port
 
 	if len(args) == 1 {
@@ -75,13 +81,46 @@ func parseArgs(args []string) (string, int) {
 		if (strings.Contains(dest, ":") && !strings.Contains(dest, "::")) || strings.Contains(dest, "]:") {
 			ci := strings.LastIndex(args[0], ":")
 			host = args[0][0:ci]
-			port, _ = strconv.Atoi(args[0][ci+1:])
+			p, _ := strconv.Atoi(args[0][ci+1:])
+			if p > 0 && p < 65535 {
+				port = p
+			}
 		} else {
-			host = args[0]
+			host = dest
 		}
-	} else if len(args) == 2 {
-		host = args[0]
-		port, _ = strconv.Atoi(args[1])
+		return host, port, nil
+	} else {
+		return "", 0, errors.New("invalid host or port")
 	}
-	return host, port
+}
+
+// ParseFlags parses the command line args, allowing flags to be
+// specified after positional args.
+func ParseFlags() error {
+	return ParseFlagSet(flag.CommandLine, os.Args[1:])
+}
+
+// ParseFlagSet works like flagset.Parse(), except positional arguments are not
+// required to come after flag arguments.
+func ParseFlagSet(flagset *flag.FlagSet, args []string) error {
+	var positionalArgs []string
+	for {
+		if err := flagset.Parse(args); err != nil {
+			return err
+		}
+		// Consume all the flags that were parsed as flags.
+		args = args[len(args)-flagset.NArg():]
+		if len(args) == 0 {
+			break
+		}
+		// There's at least one flag remaining and it must be a positional arg since
+		// we consumed all args that were parsed as flags. Consume just the first
+		// one, and retry parsing, since subsequent args may be flags.
+		positionalArgs = append(positionalArgs, args[0])
+		args = args[1:]
+	}
+	// Parse just the positional args so that flagset.Args()/flagset.NArgs()
+	// return the expected value.
+	// Note: This should never return an error.
+	return flagset.Parse(positionalArgs)
 }

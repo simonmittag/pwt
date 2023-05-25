@@ -14,7 +14,7 @@ continuous integration scripts, never call sleep inside your pipeline again.
 [![Version](https://img.shields.io/badge/version-0.1.6-orange)](https://github.com/simonmittag/pwt/releases/tag/v0.1.6)
 
 ## What's New
-### v0.1.6 
+### v0.1.7
 * -h -v flags for cli
 * bumped to go 1.20
 
