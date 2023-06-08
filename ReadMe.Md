@@ -1,7 +1,8 @@
 ![](pwt.png)
 
-pwt ("port wait") waits for you until a tcp socket, aka port becomes available and exits cleanly once it does. Designed for 
-continuous integration scripts, never call sleep inside your pipeline again.
+`pwt` ("port wait") is a commandline utility that blocks until a tcp socket, aka port becomes available. Designed to 
+replace the bash sleep command in your CI/CD scripts, this process will exit with `0` once the socket connects, or `-1`
+in the event of a timeout. 
 
 [![Circleci Builds](https://circleci.com/gh/simonmittag/pwt.svg?style=shield)](https://circleci.com/gh/simonmittag/pwt)
 [![Github Workflows](https://github.com/simonmittag/mse6/workflows/Go/badge.svg)](https://github.com/simonmittag/pwt/actions)
