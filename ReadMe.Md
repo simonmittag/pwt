@@ -36,7 +36,7 @@ pwt
 
 ## Usage
 ```
-λ pwt[v0.1.6]
+λ pwt[v0.1.7]
 Usage: pwt [-v]|[-w n] host[:port]
   -h    print usage instructions
   -v    print pwt version
