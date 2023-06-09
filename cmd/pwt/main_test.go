@@ -114,3 +114,7 @@ func TestWait(t *testing.T) {
 func TestPrintVersion(t *testing.T) {
 	printVersion()
 }
+
+func TestPrintUsage(t *testing.T) {
+	printUsage()
+}
