@@ -58,15 +58,11 @@ Wait for ipv6 localhost on port 8080 for 3 seconds
   pwt waiting for [::1]:8080 .. connected in 2 seconds
 ```
 
-
-
 Wait for google on port 443
 ```
 λ pwt -w 60 google.com:443
   pwt waiting for google.com:443 connected in <1 second  
 ```
-
-
 
 ## Contributions
 The pwt team welcomes all [contributors](https://github.com/simonmittag/pwt/blob/master/CONTRIBUTING.md). Everyone interacting with the project's codebase, issue trackers, chat rooms and mailing lists
